@@ -21,31 +21,3 @@ function productsReducer(state = {}, action) {
 }
 
 export default productsReducer;
-
-/*
-  {
-    "mens clothing": [
-      {
-        ...,
-        category: "mens clothing"
-      },
-
-      {
-        ...,
-        category: "mens clothing"
-      }
-    ],
-
-    "womens clothing": [
-      {
-        ...,
-        category: "womens clothing"
-      },
-      
-      {
-        ...,
-        category: "womens clothing"
-      }
-    ]
-  }
-  */
