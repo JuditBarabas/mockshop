@@ -9,10 +9,12 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    maxWidth: 200,
+    display: "inline"
   },
   media: {
-    height: 140
+    height: 160,
+    backgroundSize: "contain"
   }
 });
 
@@ -36,7 +38,7 @@ function CategoriesList() {
                 title="category img"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography align="center" gutterBottom variant="h5">
                   {category}
                 </Typography>
               </CardContent>
