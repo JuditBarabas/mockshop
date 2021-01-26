@@ -9,7 +9,9 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 200,
+    width: 200,
+    float: "left",
+    margin: "5%",
     display: "inline"
   },
   media: {
