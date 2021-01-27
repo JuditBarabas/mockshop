@@ -9,20 +9,22 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    width: 200,
+    width: 220,
     float: "left",
-    margin: "5%",
-    display: "inline"
+    margin: "3%"
   },
   media: {
     height: 160,
     backgroundSize: "contain"
+  },
+  typography: {
+    textTransform: "capitalize",
+    textAlign: "center"
   }
 });
 
 function CategoriesList() {
   const products = useSelector((state) => state.products);
-  console.dir(products);
   const categoriesArr = Object.keys(products);
   const getFirstImage = (category) => products[category][0].image;
 
@@ -40,7 +42,7 @@ function CategoriesList() {
                 title="category img"
               />
               <CardContent>
-                <Typography align="center" gutterBottom variant="h5">
+                <Typography className={classes.typography} gutterBottom variant="h5">
                   {category}
                 </Typography>
               </CardContent>
