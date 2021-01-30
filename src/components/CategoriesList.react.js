@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
@@ -8,9 +8,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: 10
+const useStyles = makeStyles((theme) => createStyles({
+  card: {
+    marginTop: theme.spacing(3),
+    width: 220
   },
   media: {
     height: 160,
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
     textAlign: "center"
   }
-});
+}));
 
 function CategoriesList() {
   const products = useSelector((state) => state.products);
@@ -33,15 +34,14 @@ function CategoriesList() {
     <div>
       <Grid
         container
-        className={classes.root}
         direction="row"
         justify="center"
-        spacing={6}
+        spacing={3}
       >
         {categoriesArr.map((category, index) => {
           return (
             <Grid item key={index}>
-              <Card className={classes.root} key={index}>
+              <Card className={classes.card} key={index}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
