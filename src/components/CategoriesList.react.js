@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => createStyles({
   card: {
@@ -24,10 +25,10 @@ const useStyles = makeStyles((theme) => createStyles({
 }));
 
 function CategoriesList() {
-  const products = useSelector((state) => state.products);
-  const categoriesArr = Object.keys(products);
+  const products = useSelector((state) => state.products.orderedByCategory);
   const getFirstImage = (category) => products[category][0].image;
-
+  
+    console.log(products)
   const classes = useStyles();
 
   return (
@@ -38,26 +39,30 @@ function CategoriesList() {
         justify="center"
         spacing={3}
       >
-        {categoriesArr.map((category, index) => {
-          return (
-            <Grid item key={index}>
-              <Card className={classes.card} key={index}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.media}
-                    image={getFirstImage(category)}
-                    title="category img"
-                  />
-                  <CardContent>
-                    <Typography className={classes.typography} gutterBottom variant="h5">
-                      {category}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          );
-        })}
+        {products ? (
+          Object.keys(products).map((category, index) => {
+            return (
+              <Grid item key={index}>
+                <Card className={classes.card} key={index}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image={getFirstImage(category)}
+                      title="category img"
+                    />
+                    <CardContent>
+                      <Typography className={classes.typography} gutterBottom variant="h5">
+                        {category}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            );
+          }) ) : (
+            <CircularProgress />
+          )
+        } 
       </Grid>
     </div>
   );

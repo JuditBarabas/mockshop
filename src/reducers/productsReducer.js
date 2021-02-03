@@ -14,7 +14,10 @@ function groupByCategory(productsArr) {
 function productsReducer(state = {}, action) {
   switch (action.type) {
     case "POPULATE_PRODUCTS":
-      return groupByCategory(action.payload);
+      return {
+        ...state,
+        orderedByCategory: groupByCategory(action.payload)
+      };
     default:
       return state;
   }
