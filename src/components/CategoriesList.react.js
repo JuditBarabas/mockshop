@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { getCategory } from "../actions/AppActions";
 
 const useStyles = makeStyles((theme) => createStyles({
   card: {
@@ -27,8 +28,8 @@ const useStyles = makeStyles((theme) => createStyles({
 function CategoriesList() {
   const products = useSelector((state) => state.products.orderedByCategory);
   const getFirstImage = (category) => products[category][0].image;
+  const dispatch = useDispatch();
   
-    console.log(products)
   const classes = useStyles();
 
   return (
@@ -44,7 +45,7 @@ function CategoriesList() {
             return (
               <Grid item key={index}>
                 <Card className={classes.card} key={index}>
-                  <CardActionArea>
+                  <CardActionArea onClick={() => dispatch(getCategory(category))} >
                     <CardMedia
                       className={classes.media}
                       image={getFirstImage(category)}
