@@ -1,6 +1,8 @@
+export const POPULATE_PRODUCTS = "POPULATE_PRODUCTS";
+
 function populateProducts(products, dispatch) {
   dispatch({
-    type: "POPULATE_PRODUCTS",
+    type: POPULATE_PRODUCTS,
     payload: products
   });
 }

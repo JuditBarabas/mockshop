@@ -1,3 +1,5 @@
+import { POPULATE_PRODUCTS } from "../actions/productsActions";
+
 function groupByCategory(productsArr) {
   const categoryObj = {};
   productsArr.forEach((obj) => {
@@ -13,7 +15,7 @@ function groupByCategory(productsArr) {
 
 function productsReducer(state = {}, action) {
   switch (action.type) {
-    case "POPULATE_PRODUCTS":
+    case POPULATE_PRODUCTS:
       return {
         ...state,
         orderedByCategory: groupByCategory(action.payload)

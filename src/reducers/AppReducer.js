@@ -1,6 +1,8 @@
+import { SET_CATEGORY } from "../actions/AppActions";
+
 function AppReducer(state = {}, action) {
     switch (action.type) {
-        case "SET_CATEGORY":
+        case SET_CATEGORY:
             return {
                 ...state,
                 selectedCategory: action.payload
