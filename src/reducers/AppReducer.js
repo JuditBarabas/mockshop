@@ -1,6 +1,6 @@
 function AppReducer(state = {}, action) {
     switch (action.type) {
-        case "GET_CATEGORY_PRODUCTS":
+        case "SET_CATEGORY":
             return {
                 ...state,
                 selectedCategory: action.payload

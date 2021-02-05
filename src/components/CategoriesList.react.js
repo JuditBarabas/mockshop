@@ -8,7 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { getCategory } from "../actions/AppActions";
+import { setCategory } from "../actions/AppActions";
 
 const useStyles = makeStyles((theme) => createStyles({
   card: {
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => createStyles({
   },
   typography: {
     textTransform: "capitalize",
-    textAlign: "center"
+    textAlign: "center",
+    color: "#00008B"
   }
 }));
 
@@ -44,8 +45,8 @@ function CategoriesList() {
           Object.keys(products).map((category, index) => {
             return (
               <Grid item key={index}>
-                <Card className={classes.card} key={index}>
-                  <CardActionArea onClick={() => dispatch(getCategory(category))} >
+                <Card className={classes.card}>
+                  <CardActionArea onClick={() => dispatch(setCategory(category))} >
                     <CardMedia
                       className={classes.media}
                       image={getFirstImage(category)}
