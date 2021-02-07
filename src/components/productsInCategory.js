@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import "../index.css";
 
 const useStyles = makeStyles((theme) => createStyles({
   title: {
@@ -38,35 +39,38 @@ function ProductsInCategory({selectedCategory}) {
   return (
     <div>
       <div className={classes.title}>{selectedCategory}</div>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        spacing={3}
-      >
-        {
-          products[selectedCategory].map((product, index) => {
-            return (
-              <Grid item key={index}>
-                <Card className={classes.card}>
-                  <CardActionArea>
-                    <CardMedia
-                      className={classes.media}
-                      image={product.image}
-                      title="product img"
-                    />
-                    <CardContent>
-                      <Typography noWrap className={classes.typography} gutterBottom variant="h5">
-                        {product.title}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            )
-          })
-        }   
-      </Grid>
+      <div className="product-container">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          spacing={3}
+          
+        >
+          {
+            products[selectedCategory].map((product, index) => {
+              return (
+                <Grid item key={index}>
+                  <Card className={classes.card}>
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={product.image}
+                        title="product img"
+                      />
+                      <CardContent>
+                        <Typography noWrap className={classes.typography} gutterBottom variant="h5">
+                          {product.title}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Grid>
+              )
+            })
+          }   
+        </Grid>
+      </div>
     </div>
   )
 }
