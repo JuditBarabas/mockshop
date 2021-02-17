@@ -1,30 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { setCategory } from "../actions/AppActions";
+import CardItem from "./CardItem";
 
-const useStyles = makeStyles((theme) => createStyles({
-  card: {
-    marginTop: theme.spacing(3),
-    width: 220
-  },
-  media: {
-    height: 160,
-    backgroundSize: "contain"
-  },
-  typography: {
-    textTransform: "capitalize",
-    textAlign: "center",
-    color: "#00008B"
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    justifyContent: "center"
   }
-}));
+});
 
 function CategoriesList() {
   const products = useSelector((state) => state.products.orderedByCategory);
@@ -33,39 +19,26 @@ function CategoriesList() {
   
   const classes = useStyles();
 
+const categoryClickHandler = category => {
+  dispatch(setCategory(category))
+};
+
   return (
-    <div>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        spacing={3}
-      >
+    <div className={classes.container}>
         {products ? (
           Object.keys(products).map((category, index) => {
             return (
-              <Grid item key={index}>
-                <Card className={classes.card}>
-                  <CardActionArea onClick={() => dispatch(setCategory(category))} >
-                    <CardMedia
-                      className={classes.media}
-                      image={getFirstImage(category)}
-                      title="category img"
-                    />
-                    <CardContent>
-                      <Typography className={classes.typography} gutterBottom variant="h5">
-                        {category}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
+              <CardItem
+                key={index}
+                label={category}
+                imgUrl={getFirstImage(category)}
+                clickHandler={() => categoryClickHandler(category)}
+              />
             );
           }) ) : (
             <CircularProgress />
           )
         } 
-      </Grid>
     </div>
   );
 }
