@@ -28,9 +28,6 @@ const useStyles = makeStyles({
     color: "#9e9e9e",
     marginBottom: 20
   },
-  /*button: {
-    padding: 10
-  }*/
 });
 
 function Product() {
