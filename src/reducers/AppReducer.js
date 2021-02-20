@@ -1,4 +1,11 @@
 import { SET_CATEGORY } from "../actions/appActions";
+import { SET_PRODUCT } from "../actions/appActions";
+
+const initialState = {
+    selectedCategory: null,
+    activePage: "HOME",
+    selectedProductID: null
+};
 
 function AppReducer(state = {}, action) {
     switch (action.type) {
@@ -6,6 +13,12 @@ function AppReducer(state = {}, action) {
             return {
                 ...state,
                 selectedCategory: action.payload
+            };
+        case SET_PRODUCT:
+            return {
+                ...state,
+                selectedProductID: action.payload,
+                activePage: "PRODUCT"
             };
         default:
             return state
