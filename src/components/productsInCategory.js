@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import CardItem from "./CardItem";
+import { setProduct } from "../actions/appActions";
 
 const useStyles = makeStyles({
   container: {
@@ -22,8 +23,12 @@ const useStyles = makeStyles({
 
 function ProductsInCategory({selectedCategory}) {
   const products = useSelector((state) => state.products.orderedByCategory);
-
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  const productClickHandler = productId => {
+    dispatch(setProduct(productId))
+  };
 
   return (
     <>
@@ -38,7 +43,7 @@ function ProductsInCategory({selectedCategory}) {
                   key={index}
                   label={product.title}
                   imgUrl={product.image}
-                  clickHandler={() => {}}
+                  clickHandler={() => {productClickHandler(product.id)}}
                 />
               )
             })

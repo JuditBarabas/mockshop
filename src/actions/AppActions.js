@@ -6,7 +6,7 @@ export const setCategory = (category) => ({
     payload: category
 })
 
-export const setProduct = (productsByIdObj) => ({
+export const setProduct = (productId) => ({
     type: SET_PRODUCT,
-    payload: productsByIdObj
+    payload: productId
 })
