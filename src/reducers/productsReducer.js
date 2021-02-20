@@ -13,6 +13,15 @@ function groupByCategory(productsArr) {
   return categoryObj;
 }
 
+function groupById(productsArr) {
+  const productsByIdObj= {};
+  productsArr.forEach((obj) => {
+    const { id } = obj;
+    productsByIdObj[id] = obj;
+  });
+  return productsByIdObj;
+}
+
 const initialState = {
   orderedByCategory: null,
   productsByID: null
@@ -24,7 +33,7 @@ function productsReducer(state = initialState, action) {
       return {
         ...state,
         orderedByCategory: groupByCategory(action.payload),
-        productsByID: null
+        productsByID: groupById(action.payload)
       };
     default:
       return state;
