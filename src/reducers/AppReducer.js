@@ -7,7 +7,7 @@ const initialState = {
     selectedProductID: null
 };
 
-function AppReducer(state = {}, action) {
+function AppReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CATEGORY:
             return {

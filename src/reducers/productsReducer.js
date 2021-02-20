@@ -13,12 +13,18 @@ function groupByCategory(productsArr) {
   return categoryObj;
 }
 
-function productsReducer(state = {}, action) {
+const initialState = {
+  orderedByCategory: null,
+  productsByID: null
+};
+
+function productsReducer(state = initialState, action) {
   switch (action.type) {
     case POPULATE_PRODUCTS:
       return {
         ...state,
-        orderedByCategory: groupByCategory(action.payload)
+        orderedByCategory: groupByCategory(action.payload),
+        productsByID: null
       };
     default:
       return state;
