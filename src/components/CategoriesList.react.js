@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { setCategory } from "../actions/AppActions";
+import { setCategory } from "../actions/appActions";
 import CardItem from "./CardItem";
 
 const useStyles = makeStyles({

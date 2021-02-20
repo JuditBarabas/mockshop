@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getProducts from "../actions/productsActions";
 import CategoriesList from "./CategoriesList.react";
-import ProductsInCategory from "./productsInCategory";
+import ProductsInCategory from "./ProductsInCategory";
 
 function App(props) {
   const dispatch = useDispatch();

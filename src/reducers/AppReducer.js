@@ -1,4 +1,4 @@
-import { SET_CATEGORY } from "../actions/AppActions";
+import { SET_CATEGORY } from "../actions/appActions";
 
 function AppReducer(state = {}, action) {
     switch (action.type) {
