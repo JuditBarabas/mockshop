@@ -12,7 +12,8 @@ function AppReducer(state = initialState, action) {
         case SET_CATEGORY:
             return {
                 ...state,
-                selectedCategory: action.payload
+                selectedCategory: action.payload,
+                activePage: "CATEGORY"
             };
         case SET_PRODUCT:
             return {
