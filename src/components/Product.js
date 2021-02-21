@@ -19,11 +19,9 @@ const useStyles = makeStyles({
     margin: 50,
     boxShadow: "none"
   },
-  containerMedia: {
-    minWidth: 400
-  },
   media: {
     height: 400,
+    width: 300,
     backgroundSize: "contain"
   },
   marginBottom: {
@@ -56,7 +54,7 @@ function Product() {
   return (
     <Card className={classes.container}>
 
-      <div className={classes.containerMedia}>
+      <div>
         <CardMedia className={classes.media} image={productsObj[productId].image} />
       </div>
 
