@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     boxShadow: "none"
   },
   containerMedia: {
-    width: 400
+    minWidth: 400
   },
   media: {
     height: 400,
