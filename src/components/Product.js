@@ -43,11 +43,15 @@ const useStyles = makeStyles({
 function Product() {
   const productId = useSelector(state => state.productsInCategory.selectedProductID);
   const productsObj = useSelector(state => state.products.productsByID);
+  const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
 
-  const [ size, setSize ] = useState('');
-  const [ qunatity, setQuantity ] = useState(null);
+  const [ size, setSize ] = useState('M');
 
   const classes = useStyles();
+
+  const handleChangeSize = (event) => {
+    setSize(event.target.value);
+  };
 
   return (
     <Card className={classes.container}>
@@ -70,19 +74,21 @@ function Product() {
           <Typography variant="h5" className={classes.marginBottom}>
             Price: ${productsObj[productId].price}
           </Typography>
-
+      
           <FormControl className={classes.select}>
             <InputLabel shrink>
               Size
             </InputLabel>
-            <Select value="S">
+            <Select
+              value={size}
+              onChange={handleChangeSize}
+            >
               <MenuItem value="S">S</MenuItem>
               <MenuItem value="M">M</MenuItem>
               <MenuItem value="L">L</MenuItem>
               <MenuItem value="XL">XL</MenuItem>
             </Select>
           </FormControl>
-
           <TextField type="number" label="Quantity" shrink defaultValue={1} className={classes.select}/>
           
           <div>
