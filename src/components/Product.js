@@ -41,8 +41,8 @@ const useStyles = makeStyles({
 function Product() {
   const productId = useSelector(state => state.productsInCategory.selectedProductID);
   const productsObj = useSelector(state => state.products.productsByID);
-  const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
-
+  const enableSizeSelector = productsObj[productId].category === "men clothing" || productsObj[productId].category === "women clothing";
+  
   const [ size, setSize ] = useState('M');
 
   const classes = useStyles();
@@ -72,21 +72,27 @@ function Product() {
           <Typography variant="h5" className={classes.marginBottom}>
             Price: ${productsObj[productId].price}
           </Typography>
-      
-          <FormControl className={classes.select}>
-            <InputLabel shrink>
-              Size
-            </InputLabel>
-            <Select
-              value={size}
-              onChange={handleChangeSize}
-            >
-              <MenuItem value="S">S</MenuItem>
-              <MenuItem value="M">M</MenuItem>
-              <MenuItem value="L">L</MenuItem>
-              <MenuItem value="XL">XL</MenuItem>
-            </Select>
-          </FormControl>
+
+          {
+              enableSizeSelector 
+              && (
+              <FormControl className={classes.select}>
+                <InputLabel shrink>
+                  Size
+                </InputLabel>
+                <Select
+                  value={size}
+                  onChange={handleChangeSize}
+                >
+                  <MenuItem value="S">S</MenuItem>
+                  <MenuItem value="M">M</MenuItem>
+                  <MenuItem value="L">L</MenuItem>
+                  <MenuItem value="XL">XL</MenuItem>
+                </Select>
+              </FormControl>
+              )
+          }
+
           <TextField type="number" label="Quantity" shrink defaultValue={1} className={classes.select}/>
           
           <div>
