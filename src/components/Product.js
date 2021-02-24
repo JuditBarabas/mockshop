@@ -74,8 +74,7 @@ function Product() {
           </Typography>
 
           {
-              enableSizeSelector 
-              && (
+            enableSizeSelector && 
               <FormControl className={classes.select}>
                 <InputLabel shrink>
                   Size
@@ -90,10 +89,9 @@ function Product() {
                   <MenuItem value="XL">XL</MenuItem>
                 </Select>
               </FormControl>
-              )
           }
 
-          <TextField type="number" label="Quantity" shrink defaultValue={1} className={classes.select}/>
+          <TextField type="number" label="Quantity" shrink defaultValue={1} InputProps={{ inputProps: { min: 1} }} className={classes.select}/>
           
           <div>
             <Button variant="contained" color="primary" size="large" className={classes.button}>
