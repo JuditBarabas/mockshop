@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   container: {
     display: "flex",
     margin: 50,
+    marginTop: 100,
     boxShadow: "none"
   },
   media: {

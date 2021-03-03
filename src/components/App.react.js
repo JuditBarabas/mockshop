@@ -4,6 +4,7 @@ import getProducts from "../actions/productsActions";
 import CategoriesList from "./CategoriesList.react";
 import ProductsInCategory from "./ProductsInCategory";
 import Product from "./Product";
+import AppBarSearch from "./AppBar";
 
 export default function App(props) {
   const dispatch = useDispatch();
@@ -32,8 +33,11 @@ export default function App(props) {
   }
 
   return (
-    <div>
+    <>
+      <AppBarSearch />
+      <>
       {displayedPage()}
-    </div>
+      </>
+    </>
   )
 }
