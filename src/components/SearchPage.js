@@ -54,7 +54,7 @@ function SearchPage() {
   for (const id in allProducts) {
     allProductsArray.push(allProducts[id])
   }
-  const searchResult = allProductsArray.filter(product => {
+  const searchResult = allProductsArray.filter((product) => {
     return (
       product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -84,7 +84,11 @@ function SearchPage() {
           </Typography>
         </div>
 
-        <Button variant="contained" color="primary" size="small" onClick={() => handleClick('')} className={classes.button}>
+        <Button variant="contained" 
+          color="primary" size="small" 
+          onClick={() => handleClick('')} 
+          className={classes.button}
+        >
           CLEAR SEARCH
         </Button>
         

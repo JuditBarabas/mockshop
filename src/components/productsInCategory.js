@@ -6,6 +6,14 @@ import CardItem from "./CardItem";
 import { setProduct } from "../actions/appActions";
 
 const useStyles = makeStyles({
+  pageTitle: {
+    marginTop: 64,
+    padding: 10,
+    position: 'sticky',
+    top: 64,
+    zIndex: 5,
+    backgroundColor: 'white'
+  },
   container: {
     maxWidth: 500,
     display: 'flex',
@@ -32,7 +40,7 @@ function ProductsInCategory({selectedCategory}) {
 
   return (
     <>
-      <div>
+      <div className={classes.pageTitle}>
         <Typography variant="h3" className={classes.titleCategory}>{selectedCategory}</Typography>
       </div>
       <div className={classes.container}>
