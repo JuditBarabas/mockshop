@@ -5,19 +5,17 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { searchProduct, setProduct } from "../actions/appActions";
 import CardItem from "./CardItem";
+import { CallReceived } from "@material-ui/icons";
 
 
 const useStyles = makeStyles({
   container: {
-    marginTop: '64px',
     backgroundColor: 'white',
     zIndex: 10,
-    height: '100vh',
+    height: 'calc(100% - 64px)',
     position: 'fixed',
-    top: 0,
     left: 0,
-    right: 0,
-    bottom: 0
+    right: 0
   },
   content: {
     display: 'flex',
@@ -35,7 +33,8 @@ const useStyles = makeStyles({
   products: {
     display: 'flex',
     justifyContent: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    overflowY: 'scroll'
   }
 })
 
