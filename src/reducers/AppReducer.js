@@ -1,6 +1,7 @@
 import { SET_CATEGORY } from "../actions/appActions";
 import { SET_PRODUCT } from "../actions/appActions";
 import { NAVIGATE_TO_HOME_PAGE } from "../actions/appActions";
+import { SEARCH_PRODUCT } from "../actions/appActions";
 
 const initialState = {
     selectedCategory: null,
@@ -26,6 +27,11 @@ function AppReducer(state = initialState, action) {
             return {
                 ...state,
                 activePage: "HOME"
+            };
+        case SEARCH_PRODUCT:
+            return {
+                ...state,
+                searchInput: action.payload
             };
         default:
             return state

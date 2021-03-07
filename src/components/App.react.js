@@ -4,12 +4,14 @@ import getProducts from "../actions/productsActions";
 import CategoriesList from "./CategoriesList.react";
 import ProductsInCategory from "./ProductsInCategory";
 import Product from "./Product";
-import AppBarSearch from "./AppBar";
+import NavBar from "./NavBar";
+import SearchPage from "./SearchPage";
 
 export default function App(props) {
   const dispatch = useDispatch();
   const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
   const activePage = useSelector(state => state.productsInCategory.activePage);
+  const searchAction = useSelector(state => state.productsInCategory.searchInput);
 
   useEffect(() => {
     dispatch(getProducts);
@@ -34,10 +36,9 @@ export default function App(props) {
 
   return (
     <>
-      <AppBarSearch />
-      <>
+      <NavBar />
+      { searchAction && <SearchPage /> }
       {displayedPage()}
-      </>
     </>
   )
 }

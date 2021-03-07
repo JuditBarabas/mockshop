@@ -13,11 +13,11 @@ const useStyles = makeStyles((theme) => createStyles({
   },
   media: {
     height: 160,
-    backgroundSize: "contain"
+    backgroundSize: 'contain'
   },
   typography: {
-    textTransform: "capitalize",
-    textAlign: "center"
+    textTransform: 'capitalize',
+    textAlign: 'center'
   }
 }));
 

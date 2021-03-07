@@ -7,8 +7,9 @@ import CardItem from "./CardItem";
 
 const useStyles = makeStyles({
   container: {
-    display: "flex",
-    justifyContent: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: 90
   }
 });
 

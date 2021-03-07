@@ -15,21 +15,21 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
   container: {
-    display: "flex",
+    display: 'flex',
     margin: 50,
     marginTop: 100,
-    boxShadow: "none"
+    boxShadow: 'none'
   },
   media: {
     height: 400,
     width: 300,
-    backgroundSize: "contain"
+    backgroundSize: 'contain'
   },
   marginBottom: {
     marginBottom: 20 
   },
   discription: {
-    color: "#9e9e9e",
+    color: '#9e9e9e',
     marginBottom: 20
   },
   select: {

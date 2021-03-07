@@ -8,15 +8,15 @@ import { setProduct } from "../actions/appActions";
 const useStyles = makeStyles({
   container: {
     maxWidth: 500,
-    display: "flex",
-    justifyContent: "center",
-    margin: "auto",
-    flexWrap: "wrap"
+    display: 'flex',
+    justifyContent: 'center',
+    margin: 'auto',
+    flexWrap: 'wrap'
   },
   
   titleCategory: {
-    textTransform: "capitalize",
-    textAlign: "center"
+    textTransform: 'capitalize',
+    textAlign: 'center'
   },
 });
 

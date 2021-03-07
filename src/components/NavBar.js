@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -8,7 +8,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
-import { navigateToHome } from "../actions/appActions"
+import { navigateToHome, searchProduct } from "../actions/appActions"
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -43,11 +43,11 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: 50,
     transition: theme.transitions.create('width'),
-    width: '6em',
+    width: 100,
     '&:focus': {
-      width: '10em',
+      width: 150,
     }, 
   }
 }));
@@ -55,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
 export default function AppBarSearch() {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const searchTerm = useSelector(state => state.productsInCategory.searchInput);
+  const inputChange = searchTerm => {
+    dispatch(searchProduct(searchTerm))
+  };
 
   return (
     <div className={classes.appBar}>
@@ -69,7 +73,7 @@ export default function AppBarSearch() {
             <HomeIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            MockShop
+            Jude's Online Store
           </Typography>
           <div className={classes.searchField}>
             <div className={classes.searchIcon}>
@@ -81,7 +85,8 @@ export default function AppBarSearch() {
                 root: classes.inputRoot,
                 input: classes.input
               }}
-              inputProps={{ 'aria-label': 'search' }}
+              value={searchTerm}
+              onChange={e => inputChange(e.target.value)}
             />
           </div>
         </Toolbar>
