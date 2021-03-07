@@ -5,27 +5,35 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { searchProduct, setProduct } from "../actions/appActions";
 import CardItem from "./CardItem";
-import { CallReceived } from "@material-ui/icons";
 
 
 const useStyles = makeStyles({
-  container: {
+  searchContainer: {
     backgroundColor: 'white',
     zIndex: 10,
     height: 'calc(100% - 64px)',
     position: 'fixed',
     left: 0,
-    right: 0
+    right: 0,
+    overflow: 'scroll'
   },
-  content: {
+  searchSticky: {
     display: 'flex',
     justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    margin: 20
+    position: 'sticky',
+    top: 20,
+    margin: 20,
+    zIndex: 5
+  },
+  search: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap'
   },
   button: {
     padding: 10,
-    fontSize: 12
+    fontSize: 12,
+    height: 40
   },
   searchTerm: {
     margin: 20
@@ -33,8 +41,7 @@ const useStyles = makeStyles({
   products: {
     display: 'flex',
     justifyContent: 'center',
-    flexWrap: 'wrap',
-    overflowY: 'scroll'
+    flexWrap: 'wrap'
   }
 })
 
@@ -64,22 +71,24 @@ function SearchPage() {
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
+    <div className={classes.searchContainer}>
+      <div className={classes.searchSticky}>
 
-        <Typography variant="h3">
-          Search Results for:
-        </Typography>
+        <div className={classes.search}>
+          <Typography variant="h3">
+            Search Results for:
+          </Typography>
+
+          <Typography variant="h5" className={classes.searchTerm}>
+            "{searchTerm}"
+          </Typography>
+        </div>
 
         <Button variant="contained" color="primary" size="small" onClick={() => handleClick('')} className={classes.button}>
           CLEAR SEARCH
         </Button>
-
+        
       </div>
-
-      <Typography variant="h5" className={classes.searchTerm}>
-        "{searchTerm}"
-      </Typography>
 
       <div className={classes.products}>
         {searchTerm.length >= 3 &&
