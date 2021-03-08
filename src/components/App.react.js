@@ -37,7 +37,7 @@ export default function App(props) {
   return (
     <>
       <NavBar />
-      { searchAction && <SearchPage /> }
+      {searchAction && <SearchPage />}
       {displayedPage()}
     </>
   )

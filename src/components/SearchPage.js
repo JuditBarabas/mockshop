@@ -66,7 +66,7 @@ function SearchPage() {
     dispatch(searchProduct(searchTerm))
   };
 
-  const productClickHandler = productId => {
+  const productClickHandler = (productId) => {
     dispatch(setProduct(productId))
   };
 
@@ -102,7 +102,7 @@ function SearchPage() {
                 key={index}
                 label={product.title}
                 imgUrl={product.image}
-                clickHandler={() => {productClickHandler(product.id)}}
+                clickHandler={() => {productClickHandler(product.id);  handleClick('')}}
               />
             );
           })
