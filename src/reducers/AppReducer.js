@@ -6,7 +6,8 @@ import { SEARCH_PRODUCT } from "../actions/appActions";
 const initialState = {
     selectedCategory: null,
     activePage: "HOME",
-    selectedProductID: null
+    selectedProductID: null,
+    searchInput: ''
 };
 
 function AppReducer(state = initialState, action) {
