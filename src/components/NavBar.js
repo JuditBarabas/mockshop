@@ -8,6 +8,8 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { navigateToHome, searchProduct } from "../actions/appActions"
 
 const useStyles = makeStyles((theme) => ({
@@ -89,6 +91,13 @@ export default function AppBarSearch() {
               onChange={e => inputChange(e.target.value)}
             />
           </div>
+          <IconButton
+            edge="end"
+            color="inherit"
+            //onClick={() => dispatch()}
+          >
+            <ShoppingCartOutlinedIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

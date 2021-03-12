@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -9,13 +9,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import { addToCart } from "../actions/cartActions";
 
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: 100,
+    marginTop: 100
   },
   media: {
     height: 300,
@@ -37,8 +38,8 @@ const useStyles = makeStyles({
   },
   quantity: {
     marginBottom: 20,
-    marginRight: 10,
-    width: 60
+    marginLeft: 10,
+    width: 50
   }
 });
 
@@ -47,24 +48,25 @@ function Product() {
   const productsObj = useSelector(state => state.products.productsByID);
   const enableSizeSelector = productsObj[productId].category === "men clothing" || productsObj[productId].category === "women clothing";
   
-  const [ size, setSize ] = useState('M');
+  const dispatch = useDispatch()
 
+  const [ size, setSize ] = useState('M');
+  const [quantity, setQuantity] = useState(1)
+  
   const classes = useStyles();
 
-  const handleChangeSize = (event) => {
-    setSize(event.target.value);
-  };
+  const cartItemKey = `${productId}_${size}`;
+
 
   return (
     <div className={classes.container}>
-
       <div>
-        <CardMedia className={classes.media} image={productsObj[productId].image} />
+      <CardMedia className={classes.media} image={productsObj[productId].image} />
       </div>
 
       <div className={classes.detailsContainer}>
 
-          <Typography variant="h4" className={classes.marginBottom}>
+          <Typography variant="h4">
             {productsObj[productId].title}
           </Typography>
 
@@ -72,19 +74,19 @@ function Product() {
             {productsObj[productId].description}
           </Typography>
 
-          <Typography variant="h6" className={classes.marginBottom}>
+          <Typography variant="h6">
             Price: ${productsObj[productId].price}
           </Typography>
 
           {
             enableSizeSelector && 
-              <FormControl className={classes.select}>
-                <InputLabel shrink>
+              <FormControl className={classes.marginBottom}>
+                <InputLabel>
                   Size
                 </InputLabel>
                 <Select
                   value={size}
-                  onChange={handleChangeSize}
+                  onChange={event => setSize(event.target.value)}
                 >
                   <MenuItem value="S">S</MenuItem>
                   <MenuItem value="M">M</MenuItem>
@@ -93,16 +95,24 @@ function Product() {
                 </Select>
               </FormControl>
           }
-
           <FormControl className={classes.quantity}>
             <InputLabel shrink >
               Quantity
             </InputLabel>
-            <Input type="number" id="quantity" defaultValue={1} InputProps={{ inputProps: { min: 1} }} />
+            <Input
+              type="number" 
+              id="quantity" 
+              defaultValue={1} 
+              InputProps={{ inputProps: { min: 1} }} 
+              onChange={event => setQuantity(event.target.value)}
+              />
           </FormControl>
-          
           <div>
-            <Button variant="contained" color="primary" size="large" className={classes.button}>
+            <Button 
+              variant="contained" 
+              color="primary"
+              onClick={() => dispatch(addToCart({[cartItemKey]: quantity}))}
+            >
               ADD TO CART
             </Button>
           </div>
