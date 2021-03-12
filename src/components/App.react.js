@@ -15,9 +15,6 @@ export default function App(props) {
   const activePage = useSelector(state => state.productsInCategory.activePage);
   const searchAction = useSelector(state => state.productsInCategory.searchInput);
 
-  const {itemsInCart} = useSelector(state => state.cart);
-  console.log('itemsInCart', itemsInCart)
-
   const useStyles = makeStyles({
     container: {
       display: 'flex'
