@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   container: {
-    marginTop: 90
+    marginTop: 90,
+    width: 250
   }
 })
 

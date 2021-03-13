@@ -10,7 +10,8 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import { navigateToHome, searchProduct } from "../actions/appActions"
+import { navigateToHome, searchProduct } from "../actions/appActions";
+import { toggleCartTab } from "../actions/cartActions";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -94,7 +95,7 @@ export default function AppBarSearch() {
           <IconButton
             edge="end"
             color="inherit"
-            //onClick={() => dispatch()}
+            onClick={() => dispatch(toggleCartTab())}
           >
             <ShoppingCartOutlinedIcon />
           </IconButton>

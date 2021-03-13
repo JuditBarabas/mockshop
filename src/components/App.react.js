@@ -14,10 +14,14 @@ export default function App(props) {
   const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
   const activePage = useSelector(state => state.productsInCategory.activePage);
   const searchAction = useSelector(state => state.productsInCategory.searchInput);
+  const isCartDisplay = useSelector(state => state.cart.isCartDisplay);
 
   const useStyles = makeStyles({
     container: {
       display: 'flex'
+    },
+    pageWrapper: {
+      width: "100%"
     }
   });
 
@@ -49,12 +53,12 @@ export default function App(props) {
       <NavBar />
       <div className={classes.container}>
 
-        <div>
+        <div className={classes.pageWrapper}>
           {searchAction && <SearchPage />}
           {displayedPage()}
         </div>
         
-        <Cart />
+        {isCartDisplay && <Cart />}
         
       </div>
     </>

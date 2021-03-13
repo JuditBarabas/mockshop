@@ -50,13 +50,10 @@ function Product() {
   
   const dispatch = useDispatch()
 
-  const [ size, setSize ] = useState('M');
+  const [ size, setSize ] = useState(enableSizeSelector ? 'M' : null);
   const [quantity, setQuantity] = useState(1)
   
   const classes = useStyles();
-
-  const cartItemKey = `${productId}_${size}`;
-
 
   return (
     <div className={classes.container}>
@@ -104,14 +101,14 @@ function Product() {
               id="quantity" 
               defaultValue={1} 
               InputProps={{ inputProps: { min: 1} }} 
-              onChange={event => setQuantity(event.target.value)}
+              onChange={event => setQuantity(Number(event.target.value))}
               />
           </FormControl>
           <div>
             <Button 
               variant="contained" 
               color="primary"
-              onClick={() => dispatch(addToCart({[cartItemKey]: quantity}))}
+              onClick={() => dispatch(addToCart(productId, size, quantity))}
             >
               ADD TO CART
             </Button>
