@@ -59,6 +59,7 @@ export default function AppBarSearch() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const searchTerm = useSelector(state => state.productsInCategory.searchInput);
+  const cart = useSelector(state => state.cart.itemsInCart);
   const inputChange = searchTerm => {
     dispatch(searchProduct(searchTerm))
   };
@@ -66,18 +67,24 @@ export default function AppBarSearch() {
   return (
     <div className={classes.appBar}>
       <AppBar>
+
         <Toolbar>
+
           <IconButton
             edge="start"
             className={classes.homeButton}
             color="inherit"
             onClick={() => dispatch(navigateToHome())}
           >
+
             <HomeIcon />
+
           </IconButton>
+
           <Typography className={classes.title} variant="h6" noWrap>
             Jude's Online Store
           </Typography>
+
           <div className={classes.searchField}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -92,14 +99,24 @@ export default function AppBarSearch() {
               onChange={e => inputChange(e.target.value)}
             />
           </div>
+
           <IconButton
             edge="end"
             color="inherit"
             onClick={() => dispatch(toggleCartTab())}
           >
-            <ShoppingCartOutlinedIcon />
+
+            { 
+              Object.keys(cart).length !== 0 ? 
+              <ShoppingCartIcon /> 
+              :
+              <ShoppingCartOutlinedIcon />
+            }
+
           </IconButton>
+
         </Toolbar>
+
       </AppBar>
     </div>
   );
