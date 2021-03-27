@@ -99,8 +99,7 @@ function Product() {
             <Input
               type="number" 
               id="quantity" 
-              defaultValue={1} 
-              InputProps={{ inputProps: { min: 1} }} 
+              defaultValue={1}
               onChange={event => setQuantity(Number(event.target.value))}
               />
           </FormControl>
