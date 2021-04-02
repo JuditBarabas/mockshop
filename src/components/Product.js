@@ -52,6 +52,12 @@ function Product() {
 
   const [ size, setSize ] = useState(enableSizeSelector ? 'M' : null);
   const [quantity, setQuantity] = useState(1)
+
+  const quantityChangeHandler = (quantity) => {
+    if(quantity > 0) {
+      setQuantity(quantity);
+    }
+  };
   
   const classes = useStyles();
 
@@ -99,8 +105,8 @@ function Product() {
             <Input
               type="number" 
               id="quantity" 
-              defaultValue={1}
-              onChange={event => setQuantity(Number(event.target.value))}
+              value={quantity}
+              onChange={event => quantityChangeHandler(Number(event.target.value))}
               />
           </FormControl>
           <div>

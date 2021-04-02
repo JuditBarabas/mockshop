@@ -11,7 +11,7 @@ import Cart from "./Cart";
 
 export default function App(props) {
   const dispatch = useDispatch();
-  const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
+  
   const activePage = useSelector(state => state.productsInCategory.activePage);
   const searchAction = useSelector(state => state.productsInCategory.searchInput);
   const isCartDisplay = useSelector(state => state.cart.isCartDisplay);
@@ -38,7 +38,7 @@ export default function App(props) {
         return <CategoriesList />
             
       case "CATEGORY": 
-        return <ProductsInCategory selectedCategory={selectedCategory}/>;
+        return <ProductsInCategory />;
           
       case "PRODUCT":
         return < Product />

@@ -29,6 +29,13 @@ function CartReducer(state = initialState, action) {
         isCartDisplay: !state.isCartDisplay
       };
 
+    case REMOVE_FROM_CART:
+      const { [action.payload]: deletedItem, ...itemsLeftInCart } = state.itemsInCart;
+      return {
+        ...state,
+        itemsInCart: itemsLeftInCart
+      };
+
     default:
       return state;
   }

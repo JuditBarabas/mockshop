@@ -43,6 +43,11 @@ function Cart() {
     dispatch(setProduct(productID));
   };
 
+  const deleteItemsClickHandler = (event, cartItemID) => {
+    event.stopPropagation();
+    dispatch(removeFromCart(cartItemID));
+  }
+
   return (
     <div className={classes.container}>
       
@@ -51,9 +56,9 @@ function Cart() {
           cartItemsArr.map(([cartItemID, qty], index) => {
             const [productID, size] = cartItemID.split('_', 2);
             return (
-              <div>
+              <div key={index}>
 
-                <Card className={classes.card} key={index}>
+                <Card className={classes.card}>
                   <CardActionArea className={classes.cardActionArea} onClick={() => cartItemClickHandler(productID)}>
                       <div className={classes.imgContainer}>
                         <CardMedia className={classes.img} image={products[productID].image}/>
@@ -68,8 +73,8 @@ function Cart() {
                           Size: {size}
                         </Typography>
                         <Link
-                          component="button"
                           variant="body2"
+                          onClick={(event) => deleteItemsClickHandler(event, cartItemID)}
                         >
                           Remove
                         </Link>

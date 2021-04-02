@@ -29,8 +29,9 @@ const useStyles = makeStyles({
 });
 
 
-function ProductsInCategory({selectedCategory}) {
+function ProductsInCategory() {
   const products = useSelector((state) => state.products.orderedByCategory);
+  const selectedCategory = useSelector(state => state.productsInCategory.selectedCategory);
   const dispatch = useDispatch();
   const classes = useStyles();
 
